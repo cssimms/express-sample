@@ -1,5 +1,3 @@
-console.log("Hello via Bun!");
-
 import express from "express";
 import { Database } from "bun:sqlite";
 
@@ -11,7 +9,6 @@ db.run(`
     name TEXT NOT NULL
   )
 `);
-
 const app = express();
 app.use(express.json());
 
@@ -25,4 +22,4 @@ app.post("/users", (req, res) => {
   res.status(201).json({ id: result.lastInsertRowid, name });
 });
 
-app.listen(3000, () => console.log("Listening on http://localhost:3000"));
+export default app;

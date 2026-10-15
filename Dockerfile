@@ -15,4 +15,4 @@ EXPOSE 3000
 # Run as the non-root user that ships with the image
 USER bun
 
-CMD ["bun", "index.ts"]
+CMD ["bun", "src/index.ts"]
