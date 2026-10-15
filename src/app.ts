@@ -9,7 +9,9 @@ db.run(`
     name TEXT NOT NULL
   )
 `);
+
 const app = express();
+
 app.use(express.json());
 
 app.get("/users", (_req, res) => {
@@ -18,7 +20,9 @@ app.get("/users", (_req, res) => {
 
 app.post("/users", (req, res) => {
   const { name } = req.body;
+
   const result = db.query("INSERT INTO users (name) VALUES (?)").run(name);
+
   res.status(201).json({ id: result.lastInsertRowid, name });
 });
 
