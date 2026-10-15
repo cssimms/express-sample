@@ -12,6 +12,10 @@ ENV NODE_ENV=production
 ENV PORT=3000
 EXPOSE 3000
 
+# SQLite needs a directory the non-root user can write to (it creates journal files next to the db)
+RUN mkdir -p /data && chown bun:bun /data
+ENV DB_PATH=/data/app.db
+
 # Run as the non-root user that ships with the image
 USER bun
 

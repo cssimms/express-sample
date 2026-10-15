@@ -1,7 +1,7 @@
 import express from "express";
 import { Database } from "bun:sqlite";
 
-const db = new Database("app.db", { create: true });
+const db = new Database(process.env.DB_PATH ?? "app.db", { create: true });
 
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
